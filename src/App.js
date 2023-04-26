@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar'
 import Header from './Header'
-import Produtos from './Produtos';
+import Produtos from './Produtos'
+import Home from './Home'
 
 const routesMap = {
   '/': 'Home',
@@ -10,15 +11,14 @@ const routesMap = {
 
 const App = () => {
   const {pathname} = window.location
-  
+  const Pagina = pathname === '/produtos' 
+    ? Produtos
+    : Home
+
   return (<>
     <Navbar routesMap={routesMap}/>
     <Header route={routesMap[pathname]}/>
-    { 
-       pathname === '/produtos' 
-        ? <Produtos/>
-        : <p>Essa é a home do site</p>
-    }
+    <Pagina/>
   </>)
 }
 
